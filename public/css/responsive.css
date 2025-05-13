@@ -1,0 +1,135 @@
+/* 
+ * Portfolio Website - Responsive Design
+ * Additional media queries for responsive layout
+ */
+
+/* Tablets (landscape) */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+/* Tablets (portrait) and large phones */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .section {
+    padding: var(--space-lg) 0;
+  }
+  
+  .skills {
+    gap: var(--space-sm);
+  }
+  
+  .skill-item {
+    flex: 1 1 150px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+  
+  .hero {
+    min-height: 50vh;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .contact-form {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* Print styles for resumes */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+    font-size: 12pt;
+  }
+  
+  header, footer, nav, .btn, .contact-form {
+    display: none;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .hero, .section {
+    padding: 0.5cm 0;
+    min-height: auto;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  
+  img {
+    max-width: 500px;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .project-card, .update-card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+} 

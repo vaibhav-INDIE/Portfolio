@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Updates | Vaibhav Jain</title>
+  <meta name="description" content="Stay updated with the latest projects, research, and achievements of Vaibhav Jain.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/icons/favicon.ico">
+  
+  <style>
+    /* Additional styles specific to updates page */
+    .category-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: var(--border-radius);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--light-text);
+      margin-left: var(--space-sm);
+    }
+    
+    .category-badge.certification {
+      background-color: #59387C; /* Royal purple */
+    }
+    
+    .category-badge.project {
+      background-color: #764981; /* Blend of purple and mauve */
+    }
+    
+    .category-badge.research {
+      background-color: #9B4A7F; /* Mauve/wine purple */
+    }
+    
+    .category-badge.open-source {
+      background-color: #B15984; /* Lighter mauve */
+    }
+    
+    .category-badge.event {
+      background-color: #C66888; /* Blend of mauve and coral */
+    }
+    
+    .category-badge.learning {
+      background-color: #D5808F; /* Coral pink */
+    }
+    
+    .category-badge.article {
+      background-color: #E8A3A1; /* Lighter coral */
+    }
+    
+    .update-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .update-title {
+      margin-bottom: var(--space-sm);
+    }
+    
+    .update-content {
+      margin-top: var(--space-md);
+      line-height: 1.7;
+    }
+    
+    .search-container {
+      margin-bottom: var(--space-lg);
+    }
+    
+    .search-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .search-form input {
+      flex: 1;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    .search-form button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      height: 100%;
+      padding: 0 var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="updates-page">
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">Vaibhav Jain</a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="updates.html" class="active">Updates</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button class="nav-toggle" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Updates Section -->
+  <section class="section bg-secondary">
+    <div class="container">
+      <div class="section-title-container text-center">
+        <h2>Updates</h2>
+        <p>Explore my latest work, research, and achievements</p>
+      </div>
+      
+      <!-- Updates List for JavaScript to populate -->
+      <div id="updates-list" class="updates-list">
+        <!-- Updates will be dynamically loaded here -->
+        <div class="text-center" style="padding: 20px;">
+          <div class="loading-spinner"></div>
+          <p>Loading updates...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Newsletter Section -->
+  <section class="section bg-secondary">
+    <div class="container text-center">
+      <div class="section-title-container text-center">
+        <h2>Subscribe to My Updates</h2>
+        <p>Get notified when I publish new research papers or project updates</p>
+      </div>
+      
+      <form id="newsletter-form" class="contact-form reveal" style="max-width: 500px; margin: 0 auto;">
+        <div class="form-group">
+          <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required>
+        </div>
+        
+        <button type="submit" class="btn pulse-on-hover">Subscribe</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <p>&copy; <span id="current-year">2024</span> Vaibhav Jain. All Rights Reserved.</p>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/vaibhavj478" class="social-link" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/vaibhavj478" class="social-link" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:vaibhavj478@gmail.com" class="social-link" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/updates.js"></script>
+</body>
+</html> 

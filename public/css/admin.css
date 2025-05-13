@@ -1,0 +1,135 @@
+/* Admin Panel Styles */
+.admin-page {
+  background: var(--primary-bg);
+  min-height: 100vh;
+  padding-top: var(--space-lg);
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+.admin-title {
+  font-size: 1.8rem;
+  color: var(--primary-text);
+}
+
+.admin-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.updates-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.updates-table th,
+.updates-table td {
+  padding: var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--accent-bg);
+}
+
+.updates-table th {
+  background: var(--secondary-bg);
+  font-weight: 600;
+}
+
+.updates-table tr:hover {
+  background: var(--secondary-bg);
+}
+
+.action-btn {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--animation-fast) ease;
+}
+
+.edit-btn {
+  background: var(--accent-color);
+  color: var(--light-text);
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: var(--light-text);
+}
+
+.add-update-form {
+  background: var(--card-bg);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-group label {
+  color: var(--secondary-text);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: var(--space-sm);
+  border: 1px solid var(--accent-bg);
+  border-radius: var(--border-radius);
+  background: var(--secondary-bg);
+  color: var(--primary-text);
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+  
+  .admin-actions {
+    width: 100%;
+    justify-content: center;
+  }
+} 

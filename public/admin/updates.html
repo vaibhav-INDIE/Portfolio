@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Updates | Admin Panel</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+    }
+    
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-lg);
+      background: var(--card-bg);
+      padding: var(--space-lg);
+      border-radius: var(--border-radius-lg);
+    }
+    
+    .admin-title {
+      font-size: 1.8rem;
+      color: var(--primary-text);
+    }
+    
+    .admin-actions {
+      display: flex;
+      gap: var(--space-sm);
+    }
+    
+    .updates-table-container {
+      background: var(--card-bg);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-lg);
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    
+    .updates-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .updates-table th,
+    .updates-table td {
+      padding: var(--space-md);
+      text-align: left;
+      border-bottom: 1px solid var(--accent-bg);
+    }
+    
+    .updates-table th {
+      background: var(--secondary-bg);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .updates-table tr:hover {
+      background: var(--secondary-bg);
+    }
+    
+    .action-btn {
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: all var(--animation-fast) ease;
+      margin: 0 var(--space-xs);
+    }
+    
+    .edit-btn {
+      background: var(--accent-color);
+      color: var(--light-text);
+    }
+    
+    .delete-btn {
+      background: #dc3545;
+      color: var(--light-text);
+    }
+    
+    .add-update-form {
+      background: var(--card-bg);
+      padding: var(--space-lg);
+      border-radius: var(--border-radius-lg);
+      margin-bottom: var(--space-lg);
+      display: none;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    
+    .form-group label {
+      color: var(--accent-color);
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: var(--space-sm);
+      border: 1px solid var(--accent-bg);
+      border-radius: var(--border-radius);
+      background: var(--primary-bg);
+      color: var(--primary-text);
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--border-radius);
+      background: var(--accent-color);
+      color: var(--light-text);
+      z-index: 1000;
+      transform: translateX(120%);
+      transition: transform 0.3s ease;
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
+    .notification.success {
+      background: #43a047;
+    }
+    
+    .notification.error {
+      background: #dc3545;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .admin-header {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+      }
+      
+      .admin-actions {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body class="admin-page">
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1 class="admin-title">Manage Updates</h1>
+      <div class="admin-actions">
+        <button class="btn glow-on-hover" onclick="showAddForm()">Add New Update</button>
+        <a href="../updates.html" class="btn btn-outline">View Public Page</a>
+      </div>
+    </div>
+    
+    <!-- Add/Edit Update Form -->
+    <form id="update-form" class="add-update-form">
+      <h2>Add New Update</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="update-title">Title</label>
+          <input type="text" id="update-title" name="title" required>
+        </div>
+        <div class="form-group">
+          <label for="update-date">Date</label>
+          <input type="date" id="update-date" name="date" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="update-category">Category</label>
+          <select id="update-category" name="category" required>
+            <option value="research">Research</option>
+            <option value="project">Project</option>
+            <option value="certification">Certification</option>
+            <option value="open-source">Open Source</option>
+            <option value="event">Event</option>
+            <option value="learning">Learning</option>
+            <option value="article">Article</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="update-content">Content</label>
+          <textarea id="update-content" name="content" required></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="update-image">Update Image (Optional)</label>
+          <input type="file" id="update-image" name="image" accept="image/*">
+          <img id="image-preview" class="image-preview" style="display: none;">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn glow-on-hover">Save Update</button>
+        <button type="button" class="btn btn-outline" onclick="hideAddForm()">Cancel</button>
+      </div>
+    </form>
+    
+    <!-- Updates Table -->
+    <div class="updates-table-container">
+      <table class="updates-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="updates-table-body">
+          <!-- Updates will be populated here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script>
+    // DOM Elements
+    const updateForm = document.getElementById('update-form');
+    const updatesTableBody = document.getElementById('updates-table-body');
+    const updateTitleInput = document.getElementById('update-title');
+    const updateDateInput = document.getElementById('update-date');
+    const updateCategoryInput = document.getElementById('update-category');
+    const updateContentInput = document.getElementById('update-content');
+    const updateImageInput = document.getElementById('update-image');
+    const imagePreview = document.getElementById('image-preview');
+    
+    let updates = [];
+    let editingId = null;
+    let currentImageUrl = null;
+    
+    // Format Date
+    function formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+    
+    // Show Add Form
+    function showAddForm() {
+      editingId = null;
+      updateForm.style.display = 'block';
+      updateForm.reset();
+      updateForm.querySelector('h2').textContent = 'Add New Update';
+      window.scrollTo({ top: updateForm.offsetTop - 20, behavior: 'smooth' });
+    }
+    
+    // Hide Add Form
+    function hideAddForm() {
+      updateForm.style.display = 'none';
+      updateForm.reset();
+      editingId = null;
+      imagePreview.style.display = 'none';
+      currentImageUrl = null;
+    }
+    
+    // Create Update Row
+    function createUpdateRow(update) {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${formatDate(update.date)}</td>
+        <td>
+          ${update.title}
+          ${update.image ? `<br><img src="${update.image}" alt="${update.title}" style="max-width: 100px; margin-top: 5px;">` : ''}
+        </td>
+        <td><span class="category-badge ${update.category}">${update.category}</span></td>
+        <td>
+          <button class="action-btn edit-btn" onclick="editUpdate('${update.id}')">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button class="action-btn delete-btn" onclick="deleteUpdate('${update.id}')">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </td>
+      `;
+      return row;
+    }
+    
+    // Load Updates
+    async function loadUpdates() {
+      try {
+        const response = await fetch('/api/updates');
+        updates = await response.json();
+        renderUpdates();
+      } catch (error) {
+        console.error('Error loading updates:', error);
+        showNotification('Error loading updates', 'error');
+      }
+    }
+    
+    // Render Updates
+    function renderUpdates() {
+      updatesTableBody.innerHTML = '';
+      updates.sort((a, b) => new Date(b.date) - new Date(a.date));
+      updates.forEach(update => {
+        updatesTableBody.appendChild(createUpdateRow(update));
+      });
+    }
+    
+    // Edit Update
+    function editUpdate(id) {
+      const update = updates.find(u => u.id === id);
+      if (!update) return;
+      
+      editingId = id;
+      updateTitleInput.value = update.title;
+      updateDateInput.value = update.date;
+      updateCategoryInput.value = update.category;
+      updateContentInput.value = update.content;
+      
+      // Show existing image if available
+      if (update.image) {
+        imagePreview.src = update.image;
+        imagePreview.style.display = 'block';
+        currentImageUrl = update.image;
+      } else {
+        imagePreview.style.display = 'none';
+        currentImageUrl = null;
+      }
+      
+      updateForm.style.display = 'block';
+      updateForm.querySelector('h2').textContent = 'Edit Update';
+      window.scrollTo({ top: updateForm.offsetTop - 20, behavior: 'smooth' });
+    }
+    
+    // Delete Update
+    async function deleteUpdate(id) {
+      if (!confirm('Are you sure you want to delete this update?')) return;
+      
+      try {
+        const response = await fetch(`/api/updates/${id}`, {
+          method: 'DELETE'
+        });
+        
+        if (response.ok) {
+          updates = updates.filter(u => u.id !== id);
+          renderUpdates();
+          showNotification('Update deleted successfully', 'success');
+        } else {
+          throw new Error('Failed to delete update');
+        }
+      } catch (error) {
+        console.error('Error deleting update:', error);
+        showNotification('Error deleting update', 'error');
+      }
+    }
+    
+    // Show Notification
+    function showNotification(message, type = 'success') {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 100);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      }, 3000);
+    }
+    
+    // Show image preview when a file is selected
+    updateImageInput.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      // Show preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        imagePreview.src = e.target.result;
+        imagePreview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+      
+      // Upload the file
+      const formData = new FormData();
+      formData.append('image', file);
+      
+      try {
+        const response = await fetch('/api/updates/upload', {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to upload image');
+        }
+        
+        const data = await response.json();
+        currentImageUrl = data.imageUrl;
+      } catch (error) {
+        console.error('Error uploading image:', error);
+        showNotification('Error uploading image', 'error');
+      }
+    });
+    
+    // Handle Form Submit
+    updateForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const updateData = {
+        title: updateTitleInput.value,
+        date: updateDateInput.value,
+        category: updateCategoryInput.value,
+        content: updateContentInput.value,
+        image: currentImageUrl
+      };
+      
+      try {
+        const url = editingId ? `/api/updates/${editingId}` : '/api/updates';
+        const method = editingId ? 'PUT' : 'POST';
+        
+        const response = await fetch(url, {
+          method,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updateData)
+        });
+        
+        if (response.ok) {
+          const updatedUpdate = await response.json();
+          
+          if (editingId) {
+            updates = updates.map(u => u.id === editingId ? updatedUpdate : u);
+          } else {
+            updates.push(updatedUpdate);
+          }
+          
+          renderUpdates();
+          hideAddForm();
+          showNotification(
+            editingId ? 'Update edited successfully' : 'Update added successfully',
+            'success'
+          );
+        } else {
+          throw new Error('Failed to save update');
+        }
+      } catch (error) {
+        console.error('Error saving update:', error);
+        showNotification('Error saving update', 'error');
+      }
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadUpdates);
+  </script>
+</body>
+</html> 

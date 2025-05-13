@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav Jain | Web Developer</title>
+  <meta name="description" content="Personal portfolio of Vaibhav Jain, a passionate web developer specializing in HTML, CSS, and JavaScript development.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/icons/favicon.ico">
+  
+  <style>
+    /* Additional styles specific to this page */
+    .category-badge.research {
+      background-color: #9B4A7F; /* Updated to match our purple theme */
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">Vaibhav Jain</a>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="updates.html">Updates</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <!-- Theme switch button removed -->
+          <button class="nav-toggle" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-heading fade-in fade-in-1">Hi, I'm <span class="highlight">Vaibhav Jain</span></h1>
+          <p class="fade-in fade-in-2">A passionate CS student and developer with expertise in Python, data science, and machine learning. Currently pursuing B.Tech in Computer Science at KIIT University with CGPA 8.49.</p>
+          <div class="hero-buttons fade-in fade-in-3">
+            <a href="#projects" class="btn glow-on-hover">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title-container text-center">
+        <h2>About Me</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text reveal">
+          <p>I'm a Computer Science student at KIIT University with a strong foundation in Python programming, data science, and machine learning. My interests lie in AI research, automation, and solving complex problems through innovative software solutions.</p>
+          <p>Currently working on research projects related to hate speech detection and mathematical problem solving using LLM reasoning with genetic algorithms, I enjoy the challenges of applying cutting-edge techniques to real-world problems.</p>
+        </div>
+        
+        <div class="text-center reveal">
+          <h3>Education</h3>
+        </div>
+        <div class="skills reveal">
+          <div class="skill-item pulse-on-hover">
+            <h4>KIIT University</h4>
+            <p>B.Tech in Computer Science and System Engineering<br>CGPA: 8.49</p>
+          </div>
+          <div class="skill-item pulse-on-hover">
+            <h4>Jaypee Public School</h4>
+            <p>Completed 10+2</p>
+          </div>
+        </div>
+        
+        <div class="text-center reveal">
+          <h3>My Skills</h3>
+        </div>
+        <div class="skills reveal">
+          <div class="skill-item pulse-on-hover">
+            <h4>Programming</h4>
+            <p>Python, C, Java</p>
+          </div>
+          <div class="skill-item pulse-on-hover">
+            <h4>Data Science</h4>
+            <p>Pandas, TensorFlow, Scikit-learn, Matplotlib</p>
+          </div>
+          <div class="skill-item pulse-on-hover">
+            <h4>Development</h4>
+            <p>Selenium, Requests, Tkinter, PyQT5/6</p>
+          </div>
+          <div class="skill-item pulse-on-hover">
+            <h4>Database</h4>
+            <p>MySQL</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-secondary">
+    <div class="container">
+      <div class="section-title-container text-center">
+        <h2>Featured Projects</h2>
+        <p>A selection of my recent work in Python, AI, and software development</p>
+      </div>
+      
+      <!-- Projects Grid for JavaScript to populate -->
+      <div id="featured-projects" class="projects-grid reveal">
+        <!-- Projects will be dynamically loaded here -->
+      </div>
+      
+      <div class="text-center reveal" style="margin-top: 40px;">
+        <a href="projects.html" class="btn">View All Projects</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Updates Section -->
+  <section class="section bg-secondary">
+    <div class="container">
+      <div class="section-title-container text-center">
+        <h2 class="fade-in">Latest Updates</h2>
+        <p class="fade-in fade-in-2">Stay updated with my recent work and achievements</p>
+      </div>
+      
+      <!-- Scrollable container for featured updates -->
+      <div id="featured-updates" class="updates-list">
+        <!-- Updates will be loaded dynamically -->
+        <div class="text-center" style="padding: 20px;">
+          <div class="loading-spinner"></div>
+          <p>Loading updates...</p>
+        </div>
+      </div>
+      
+      <div class="text-center reveal" style="margin-top: 30px;">
+        <a href="updates.html" class="btn btn-outline pulse-on-hover">View All Updates</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-secondary">
+    <div class="container">
+      <div class="section-title-container text-center">
+        <h2>Get In Touch</h2>
+        <p>Interested in working together? Feel free to contact me!</p>
+      </div>
+      
+      <form id="contact-form" class="contact-form reveal">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can I help you?" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <p>&copy; <span id="current-year">2024</span> Vaibhav Jain. All Rights Reserved.</p>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/vaibhavj478" class="social-link" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/vaibhavj478" class="social-link" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:vaibhavj478@gmail.com" class="social-link" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html> 

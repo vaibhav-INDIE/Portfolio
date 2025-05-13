@@ -1,0 +1,52 @@
+{
+  "projects": [
+    {
+      "id": "234a7cfc-24e0-4e6e-8fa9-ed2f8342198c",
+      "title": "AI Rasoi",
+      "description": "An AI-powered nutrition assistant app that generates personalized daily diet plans using the Gemini API, with features like calorie tracking and recipe recommendations.",
+      "liveUrl": "https://www.google.co.in/",
+      "codeUrl": "https://github.com/vaibhav-INDIE/Gen.Recipe",
+      "tags": [
+        "Flutter",
+        "Dart",
+        "AI",
+        "Mobile"
+      ],
+      "featured": true,
+      "image": "/uploads/projects/1742217743707-252384776.png",
+      "createdAt": "2024-03-17T13:23:18.382Z"
+    },
+    {
+      "id": "83a4f61c-9d2e-4a68-8c09-0e39f7d92a5b",
+      "title": "Hate Speech Recognition",
+      "description": "Deep learning model using Artificial Neural Networks achieving 94% accuracy with optimized preprocessing techniques including tokenization, stemming, and word embeddings.",
+      "tags": [
+        "Python",
+        "Deep Learning",
+        "NLP",
+        "AI"
+      ],
+      "featured": true,
+      "image": null,
+      "liveUrl": null,
+      "codeUrl": "https://github.com/vaibhav-INDIE/hate-speech",
+      "createdAt": "2024-03-15T10:30:00.000Z"
+    },
+    {
+      "id": "c5b8e9a2-7f1d-4e3b-b6d4-12a3f8d90c7e",
+      "title": "Web Automation System",
+      "description": "Python-based automation system using Selenium with a web crawler for automating forum interactions and Google Meet session joining, built with OOP principles.",
+      "tags": [
+        "Python",
+        "Selenium",
+        "OOP",
+        "Automation"
+      ],
+      "featured": true,
+      "image": null,
+      "liveUrl": "https://automation-demo.com",
+      "codeUrl": "https://github.com/vaibhav-INDIE/web-automation",
+      "createdAt": "2024-02-20T14:45:00.000Z"
+    }
+  ]
+}

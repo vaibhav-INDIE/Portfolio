@@ -1,0 +1,186 @@
+/* 
+ * Portfolio Website - Animations
+ * Contains all animations and transitions
+ */
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.active,
+.reveal.active .fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered fade-ins for hero section */
+.fade-in-1 {
+  transition-delay: 0.1s;
+}
+
+.fade-in-2 {
+  transition-delay: 0.3s;
+}
+
+.fade-in-3 {
+  transition-delay: 0.5s;
+}
+
+/* Slide-up animation for cards */
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-up.active,
+.reveal.active .slide-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide-in animations */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-in-left.active,
+.reveal.active .slide-in-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right.active,
+.reveal.active .slide-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Reveal container */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(214, 128, 143, 0.7);
+  }
+  
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(214, 128, 143, 0);
+  }
+  
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(214, 128, 143, 0);
+  }
+}
+
+.pulse-on-hover:hover {
+  animation: pulse 1.5s infinite;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(214, 128, 143, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(214, 128, 143, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(214, 128, 143, 0.6);
+  }
+}
+
+.glow-on-hover:hover {
+  animation: glow 1.5s infinite;
+}
+
+/* Shine effect for images */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+  transition: all 0.75s;
+}
+
+.shine-effect:hover::before {
+  animation: shine 1.5s;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+/* Typing cursor animation */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 0.2em;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Responsive animation adjustments */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .slide-up,
+  .slide-in-left,
+  .slide-in-right,
+  .reveal {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .pulse-on-hover:hover,
+  .glow-on-hover:hover,
+  .shine-effect::before {
+    animation: none;
+  }
+} 
+} 
